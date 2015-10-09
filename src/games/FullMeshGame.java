@@ -1,20 +1,23 @@
 package games;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javafx.scene.paint.Color;
 
 import engine.math.Vector3D;
 import engine.model.logic.GameLogic;
 import engine.model.logic.GameObject;
-import engine.model.logic.components.Rotator;
 import engine.utility.Constants;
 import engine.view.render.components.MeshRenderer;
 import engine.view.render.meshes.TetrahedronMesh;
 
-public class TetrahederGame extends Game {
-    public TetrahederGame() { super(); }
+public class FullMeshGame extends Game {
+    public FullMeshGame() { super(); }
 
     @Override
     protected GameLogic initialiseGameLogic() {
+        List<GameObject> gameObjects = new ArrayList<>();
         GameLogic gameLogic = new GameLogic();
 
         for (int i = 0; i < 100; ++i){
@@ -26,8 +29,15 @@ public class TetrahederGame extends Game {
 
             gameObject.setRenderComponent(new MeshRenderer(Color.BLACK, new TetrahedronMesh()));
 
-            gameLogic.addGameObject(gameObject);
+            // keep near and far clipping in mind
+            double z = gameObject.getTransform().getPosition().getZ();
+            if (z >= 50 && z <= 250) { gameObjects.add(gameObject); }
+
+            // painters algo
+            gameObjects.sort(new GameObject.ZCoordinateComparator());
         }
+
+        gameObjects.forEach(gameObject -> gameLogic.addGameObject(gameObject));
 
         return gameLogic;
     }

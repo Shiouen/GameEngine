@@ -4,13 +4,12 @@ import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
-import games.FollowTheLeaderGame;
 import games.*;
 
 public class StartGame extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
-        Game game = new TetrahederGame();
+        Game game = new FullMeshGame();
         Node gameView = game.getGameView();
 
         BorderPane borderPane = new BorderPane(gameView);

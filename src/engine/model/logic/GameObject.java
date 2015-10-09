@@ -1,6 +1,7 @@
 package engine.model.logic;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 import engine.model.logic.components.LogicComponent;
@@ -43,4 +44,11 @@ public class GameObject {
         return result;
     }
     public void update() { this.components.forEach(LogicComponent::update); }
+
+    public static class ZCoordinateComparator implements Comparator<GameObject> {
+        @Override
+        public int compare(GameObject obj1, GameObject obj2) {
+            return obj1.getTransform().getPosition().getZ() > obj2.getTransform().getPosition().getZ() ? -1 : 1;
+        }
+    }
 }

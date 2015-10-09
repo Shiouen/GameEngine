@@ -27,7 +27,7 @@ public class Face {
         b = b.add(transform.getPosition());
         c = c.add(transform.getPosition());
 
-        gc.strokeLine(a.getX(),a.getY(),b.getX(),b.getY());
+        gc.strokeLine(a.getX(), a.getY(), b.getX(), b.getY());
         gc.strokeLine(b.getX(), b.getY(), c.getX(), c.getY());
         gc.strokeLine(c.getX(), c.getY(), a.getX(), a.getY());
     }

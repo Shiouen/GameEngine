@@ -1,10 +1,12 @@
-import games.Game;
-import games.MeshGame;
 import javafx.application.Application;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
+
+import games.FollowTheLeaderGame;
+import games.Game;
+import games.MeshGame;
 
 public class StartGame extends Application {
     @Override

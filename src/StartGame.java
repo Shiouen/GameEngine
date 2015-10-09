@@ -5,13 +5,12 @@ import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
 import games.FollowTheLeaderGame;
-import games.Game;
-import games.MeshGame;
+import games.*;
 
 public class StartGame extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
-        Game game = new MeshGame();
+        Game game = new TetrahederGame();
         Node gameView = game.getGameView();
 
         BorderPane borderPane = new BorderPane(gameView);

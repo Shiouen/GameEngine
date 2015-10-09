@@ -1,6 +1,7 @@
 package engine.view.render.meshes;
 
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.paint.Color;
 
 import engine.math.Vector3D;
 import engine.model.logic.components.Transform;
@@ -14,7 +15,7 @@ public class Face {
         this.vertices[2] = c;
     }
 
-    public void render(GraphicsContext gc, Transform transform) {
+    public void render(GraphicsContext context, Transform transform) {
         Vector3D a = vertices[0].rotate(transform.getRotation());
         Vector3D b = vertices[1].rotate(transform.getRotation());
         Vector3D c = vertices[2].rotate(transform.getRotation());
@@ -27,8 +28,15 @@ public class Face {
         b = b.add(transform.getPosition());
         c = c.add(transform.getPosition());
 
-        gc.strokeLine(a.getX(), a.getY(), b.getX(), b.getY());
-        gc.strokeLine(b.getX(), b.getY(), c.getX(), c.getY());
-        gc.strokeLine(c.getX(), c.getY(), a.getX(), a.getY());
+        context.strokeLine(a.getX(), a.getY(), b.getX(), b.getY());
+        context.strokeLine(b.getX(), b.getY(), c.getX(), c.getY());
+        context.strokeLine(c.getX(), c.getY(), a.getX(), a.getY());
+
+        context.setFill(Color.RED);
+        context.fillPolygon(
+                new double[] { a.getX(), b.getX(), c.getX() },
+                new double[] { a.getY(), b.getY(), c.getY() },
+                3
+        );
     }
 }

@@ -24,7 +24,7 @@ public class GameView extends Canvas {
         this.log.info("rendering scene..");
         GraphicsContext context = getGraphicsContext2D();
 
-        context.setFill(Color.YELLOW);
+        context.setFill(Color.LIGHTGREY);
         context.fillRect(0, 0, Constants.VIEW_SIZE, Constants.VIEW_SIZE);
 
         for (GameObject gameObject : gameLogic.getGameObjects()) {
